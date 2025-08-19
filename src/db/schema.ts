@@ -1,5 +1,4 @@
 import { integer, sqliteTable, text } from "drizzle-orm/sqlite-core";
-import app from "../server";
 
 export const PatientsTable = sqliteTable("Patients", {
     id: integer("id").primaryKey(),
