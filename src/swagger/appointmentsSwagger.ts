@@ -1,5 +1,8 @@
 // src/swagger/appointmentsSwagger.ts
 
+import { format } from "path";
+import app from "../server";
+
 export const appointmentsSwagger = {
   components: {
     schemas: {
@@ -15,12 +18,12 @@ export const appointmentsSwagger = {
             type: "integer",
             description: "The id of the patient"
           },
-          date: {
+          appointmentDate: {
             type: "string",
             format: "date",
             description: "The date of the appointment (YYYY-MM-DD)"
           },
-          time: {
+          appointmentTime: {
             type: "string",
             description: "The time of the appointment (HH:MM)"
           },
@@ -136,12 +139,12 @@ export const appointmentsSwagger = {
               schema: {
                 type: "object",
                 properties: {
-                  patientId: { type: "integer" },
-                  date: { type: "string", format: "date" },
-                  time: { type: "string" },
-                  reason: { type: "string" }
+                  patientId: { type: "integer", example: 123 },
+                  appointmentDate: { type: "string", example: "2025-08-20"},
+                  appointmentTime: { type: "string", example: "14:30"},
+                  reason: { type: "string", example: "Regular check-up" }
                 },
-                required: ["patientId", "date", "time", "reason"]
+                required: ["patientId", "appointmentDate", "appointmentTime", "reason"]
               }
             }
           }
@@ -157,7 +160,8 @@ export const appointmentsSwagger = {
           }
         }
       }
-    },
+    }
+    ,
     "/api/update-appointment/{id}": {
       put: {
         summary: "Updates an existing appointment",
@@ -178,11 +182,12 @@ export const appointmentsSwagger = {
               schema: {
                 type: "object",
                 properties: {
-                  patientId: { type: "integer" },
-                  date: { type: "string", format: "date" },
-                  time: { type: "string" },
-                  reason: { type: "string" }
-                }
+                  patientId: { type: "integer", example: 123 },
+                  appointmentDate: { type: "string", example: "2025-08-20" },
+                  appointmentTime: { type: "string", example: "14:30" },
+                  reason: { type: "string", example: "Regular check-up" }
+                },
+                required: ["patientId", "appointmentDate", "appointmentTime", "reason"]
               }
             }
           }

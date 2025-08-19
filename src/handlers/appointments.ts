@@ -25,12 +25,12 @@ export async function createAppointment(
     next: NextFunction
 ) {
     try {
-        const { patientId, date, time, reason } = req.body
+        const { patientId, appointmentDate, appointmentTime, reason } = req.body
         const patientExists = await db.select().from(PatientsTable).where(eq(PatientsTable.id, patientId))
         if (patientExists.length === 0) {
             return next(new CustomError("Patient not found", 404));
         }
-        const appointment = await db.insert(AppointmentsTable).values({ patientId, date, time, reason }).returning()
+        const appointment = await db.insert(AppointmentsTable).values({ patientId, appointmentDate, appointmentTime, reason }).returning()
         res.status(201).json({ appointment, message: "Appointment created successfully" });
     } catch (error) {
         next(new CustomError("Failed to create Appointment", 500));
@@ -82,14 +82,14 @@ export async function updateAppointment(
     next: NextFunction
 ) {
     try {
-        const { patientId, date, time, reason } = req.body
+        const { patientId, appointmentDate, appointmentTime, reason } = req.body
         const patientExists = await db.select().from(PatientsTable).where(eq(PatientsTable.id, patientId))
         if (patientExists.length === 0) {
             return next(new CustomError("Patient not found", 404));
         }
         const id = +req.params.id
         const appointment = await db.update(AppointmentsTable)
-            .set({ patientId, date, time, reason })
+            .set({ patientId, appointmentDate, appointmentTime, reason })
             .where(
                 eq(
                     AppointmentsTable.id, id
