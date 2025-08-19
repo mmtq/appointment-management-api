@@ -38,7 +38,7 @@ pnpm db:push
 pnpm dev
 ```
 
-Server will run on [http://localhost:3000](http://localhost:8000)
+Server will run on [http://localhost:8000](http://localhost:8000)
 
 ---
 ---
@@ -57,8 +57,3 @@ Server will run on [http://localhost:3000](http://localhost:8000)
 - OpenAPI JSON:
   - Production: [https://appointment-management-api-34zp.onrender.com/docs-json](https://appointment-management-api-34zp.onrender.com/docs-json)
   - Local: [http://localhost:8000/docs-json](http://localhost:8000/docs-json)
-
----
-
-## 📜 License
-MIT License © 2025
