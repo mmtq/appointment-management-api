@@ -3,6 +3,7 @@ import { CustomError } from "../lib/custom-error";
 import { db } from "../db/db";
 import { AppointmentsTable, PatientsTable } from "../db/schema";
 import { eq } from "drizzle-orm";
+import { validationResult } from "express-validator";
 
 // Get All Patients
 export async function getAllPatients(
@@ -25,6 +26,10 @@ export async function createAppointment(
     next: NextFunction
 ) {
     try {
+        const err = validationResult(req);
+        if (!err.isEmpty()) {
+            return next(new CustomError(JSON.stringify(err.array()), 400));
+        }
         const { patientId, appointmentDate, appointmentTime, reason } = req.body
         const patientExists = await db.select().from(PatientsTable).where(eq(PatientsTable.id, patientId))
         if (patientExists.length === 0) {
@@ -58,6 +63,10 @@ export async function getAppointment(
     next: NextFunction
 ) {
     try {
+        const err = validationResult(req);
+        if (!err.isEmpty()) {
+            return next(new CustomError(JSON.stringify(err.array()), 400));
+        }
 
         const id = +req.params.id
         const appointment = await db.select().from(AppointmentsTable)
@@ -82,6 +91,11 @@ export async function updateAppointment(
     next: NextFunction
 ) {
     try {
+        const err = validationResult(req);
+        if (!err.isEmpty()) {
+            return next(new CustomError(JSON.stringify(err.array()), 400));
+        }
+
         const { patientId, appointmentDate, appointmentTime, reason } = req.body
         const patientExists = await db.select().from(PatientsTable).where(eq(PatientsTable.id, patientId))
         if (patientExists.length === 0) {
@@ -111,6 +125,11 @@ export async function deleteAppointment(
     next: NextFunction
 ) {
     try {
+        const err = validationResult(req);
+        if (!err.isEmpty()) {
+            return next(new CustomError(JSON.stringify(err.array()), 400));
+        }
+
         const id = +req.params.id
         const appointment = await db.delete(AppointmentsTable)
             .where(
