@@ -11,7 +11,6 @@ app.use(json());
 
 app.use("/api", appointmentsRouter);
 
-// Swagger docs
 setupSwagger(app);
 
 app.get("/", (req, res) => res.send({ message: "Welcome to Appointment Management API" }));

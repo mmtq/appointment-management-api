@@ -1,16 +1,15 @@
 import { integer, sqliteTable, text } from "drizzle-orm/sqlite-core";
+import app from "../server";
 
-// Patients table (for reference)
 export const PatientsTable = sqliteTable("Patients", {
-    id: integer("id").primaryKey(), // PatientId in API maps to this
+    id: integer("id").primaryKey(),
     name: text("name").notNull(),
     email: text("email").notNull(),
     phone: text("phone").notNull(),
 });
 
-// Appointments table
 export const AppointmentsTable = sqliteTable("Appointments", {
-    id: integer("id").primaryKey(), // AppointmentId in API maps to this
+    appointmentId: integer("appointmentId").primaryKey(),
     patientId: integer("patientId")
         .notNull()
         .references(() => PatientsTable.id, { onDelete: "cascade" }),

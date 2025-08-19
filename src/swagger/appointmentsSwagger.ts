@@ -1,8 +1,3 @@
-// src/swagger/appointmentsSwagger.ts
-
-import { format } from "path";
-import app from "../server";
-
 export const appointmentsSwagger = {
   components: {
     schemas: {

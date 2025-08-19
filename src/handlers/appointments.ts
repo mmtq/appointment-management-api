@@ -72,7 +72,7 @@ export async function getAppointment(
         const appointment = await db.select().from(AppointmentsTable)
             .where(
                 eq(
-                    AppointmentsTable.id, id
+                    AppointmentsTable.appointmentId, id
                 )
             )
         if (appointment.length === 0) {
@@ -106,7 +106,7 @@ export async function updateAppointment(
             .set({ patientId, appointmentDate, appointmentTime, reason })
             .where(
                 eq(
-                    AppointmentsTable.id, id
+                    AppointmentsTable.appointmentId, id
                 )
             ).returning()
         if (appointment.length === 0) {
@@ -134,10 +134,10 @@ export async function deleteAppointment(
         const appointment = await db.delete(AppointmentsTable)
             .where(
                 eq(
-                    AppointmentsTable.id, id
+                    AppointmentsTable.appointmentId, id
                 )
             ).returning({
-                deletedAppointmentId: AppointmentsTable.id
+                deletedAppointmentId: AppointmentsTable.appointmentId
             })
         if (appointment.length === 0) {
             return next(new CustomError("Appointment not found", 404));
