@@ -45,7 +45,7 @@ Server will run on [http://localhost:3000](http://localhost:3000)
 
 ## 🎥 Demo
 
-[![Watch the demo](https://drive.google.com/file/d/1hA9DahDB_KHsWvacXXrwUU9zO-ijGNS1/view?usp=drive_link)](https://drive.google.com/file/d/1CETavuRFk3b4Fha_vj4ri6UrCRZXNAi3/view?usp=drive_link)
+[![Watch the demo](https://maroon-electronic-gamefowl-694.mypinata.cloud/ipfs/bafkreiddbmhscum6cicxhujoaijp4vcxelc6p7bsuwxfja52jkw5obxnce)](https://drive.google.com/file/d/1CETavuRFk3b4Fha_vj4ri6UrCRZXNAi3/view?usp=drive_link)
 
 ---
 
