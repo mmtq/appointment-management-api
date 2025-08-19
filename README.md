@@ -25,20 +25,20 @@ A simple RESTful API built with **Express.js** and **Drizzle ORM (SQLite/Turso)*
 
 ```bash
 # Clone repo
-git clone https://github.com/your-username/appointment-api.git
-cd appointment-api
+git clone https://github.com/mmtq/appointment-management-api
+cd appointment-management-api
 
 # Install dependencies
 pnpm install
 
 # Push schema to DB
-npx drizzle-kit push
+pnpm db:push
 
 # Run server
 pnpm dev
 ```
 
-Server will run on [http://localhost:3000](http://localhost:3000)
+Server will run on [http://localhost:3000](http://localhost:8000)
 
 ---
 ---
@@ -51,8 +51,12 @@ Server will run on [http://localhost:3000](http://localhost:3000)
 
 ## 📑 Swagger & OpenAPI
 
-- Swagger UI: [http://localhost:3000/api-docs](/docs)  
-- OpenAPI JSON: [http://localhost:3000/api-docs.json](/docs-json)
+- Swagger UI:
+  - Production: [https://appointment-management-api-34zp.onrender.com/docs](https://appointment-management-api-34zp.onrender.com/docs)
+  - Local: [http://localhost:8000/docs](http://localhost:8000/docs)
+- OpenAPI JSON:
+  - Production: [https://appointment-management-api-34zp.onrender.com/docs-json](https://appointment-management-api-34zp.onrender.com/docs-json)
+  - Local: [http://localhost:8000/docs-json](http://localhost:8000/docs-json)
 
 ---
 
