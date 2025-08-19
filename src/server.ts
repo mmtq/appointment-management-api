@@ -1,29 +1,22 @@
-import express, {urlencoded, json} from 'express'
-import { setupSwagger } from './swagger'
-import { notFound } from './middleware/not-found'
-import { error } from './middleware/error'
+import express, { json, urlencoded } from "express";
+import { setupSwagger } from "./swagger/swagger";
+import appointmentsRouter from "./routes/appointments";
+import { notFound } from "./middleware/not-found";
+import { error } from "./middleware/error";
 
-const app = express()
+const app = express();
 
-app.use(urlencoded({extended: true}))
-app.use(json())
+app.use(urlencoded({ extended: true }));
+app.use(json());
 
-setupSwagger(app)
+app.use("/api", appointmentsRouter);
 
-/**
- * @swagger
- * /:
- *  get:
- *      summary: Home
- *      description: Home
- *      responses:
- *          200:
- *              description: Success
- */
+// Swagger docs
+setupSwagger(app);
 
-app.get('/', (req, res) => res.send({message: 'Welcome to Appointment Management API'}))
+app.get("/", (req, res) => res.send({ message: "Welcome to Appointment Management API" }));
 
-app.use(notFound)
-app.use(error)
+app.use(notFound);
+app.use(error);
 
-export default app
+export default app;
