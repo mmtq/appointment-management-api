@@ -26,9 +26,10 @@ export function validateAppointmentTime() {
 
 export function validateReason() {
   return body("reason")
+    .trim()  
+    .escape() 
     .isString().withMessage("Reason must be a string")
     .notEmpty().withMessage("Reason cannot be empty")
-    .trim().escape()
 }
 
 export const validateCreateAppointment = [
